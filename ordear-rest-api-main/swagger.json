@@ -1,0 +1,2703 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Ordear Rest API Documentation",
+    "description": "Backend Server Documentation Rest APIs",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:5555",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Rest API",
+      "description": "API for ordear in the system"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/auth/login": {
+      "post": {
+        "tags": [
+          "Login"
+        ],
+        "summary": "User login",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "Your email",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "description": "Your password",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/menu/retrieve": {
+      "get": {
+        "tags": [
+          "Menu"
+        ],
+        "summary": "Fetch all menus",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Auth Token",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/menu/fetch/enable": {
+      "get": {
+        "tags": [
+          "Menu"
+        ],
+        "summary": "Fetch all enabled menu",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Auth Token",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/menu/fetch/disable": {
+      "get": {
+        "tags": [
+          "Menu"
+        ],
+        "summary": "Fetch all disabled menu",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Auth Token",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/menu/find/item/:id": {
+      "get": {
+        "tags": [
+          "Menu"
+        ],
+        "summary": "Fetch menu by object Id",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Auth Token",
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID that we want to parse",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/menu/add/:restaurantFK": {
+      "parameters": [
+        {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "description": "Auth Token",
+          "type": "string"
+        },
+        {
+          "name": "restaurantFK",
+          "in": "path",
+          "required": true,
+          "description": "ID of restaurant that we want to parse",
+          "type": "string"
+        }
+      ],
+      "post": {
+        "tags": [
+          "Menu"
+        ],
+        "summary": "Create new menu",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Auth Token",
+            "type": "string"
+          },
+          {
+            "name": "menu",
+            "in": "body",
+            "description": "Menu that we want to create"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "New item is created"
+          }
+        }
+      }
+    },
+    "/menu/update/{id}": {
+      "parameters": [
+        {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "description": "Auth Token",
+          "type": "string"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of menu that we want to find",
+          "type": "string"
+        }
+      ],
+      "put": {
+        "summary": "Update menu with give ID",
+        "tags": [
+          "Menu"
+        ],
+        "parameters": [
+          {
+            "name": "menu",
+            "in": "body",
+            "description": "Menu with new values of properties"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Menu is updated"
+          }
+        }
+      }
+    },
+    "/menu/update/enable/visibility/{id}": {
+      "parameters": [
+        {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "description": "Auth Token",
+          "type": "string"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of menu that we want to find",
+          "type": "string"
+        }
+      ],
+      "put": {
+        "summary": "Enable menu with give ID",
+        "tags": [
+          "Menu"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Auth Token",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Menu is enabled"
+          }
+        }
+      }
+    },
+    "/menu/update/disable/visibility/{id}": {
+      "parameters": [
+        {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "description": "Auth Token",
+          "type": "string"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of menu that we want to find",
+          "type": "string"
+        }
+      ],
+      "put": {
+        "summary": "Disable menu with give ID",
+        "tags": [
+          "Menu"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Auth Token",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Menu is disabled"
+          }
+        }
+      }
+    },
+    "/menu/delete/{id}": {
+      "parameters": [
+        {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "description": "Auth Token",
+          "type": "string"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of menu that we want to delete",
+          "type": "string"
+        }
+      ],
+      "delete": {
+        "tags": [
+          "Menu"
+        ],
+        "summary": "Delete an existant menu",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/category/retrieve": {
+      "parameters": [
+        {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "description": "Auth Token",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Category"
+        ],
+        "summary": "Fetch all categories",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/category/fetch/enable": {
+      "parameters": [
+        {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "description": "Auth Token",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Category"
+        ],
+        "summary": "Fetch all enabled categories",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/category/fetch/disable": {
+      "parameters": [
+        {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "description": "Auth Token",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Category"
+        ],
+        "summary": "Fetch all disabled categories",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/category/find/item/:id": {
+      "parameters": [
+        {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "description": "Auth Token",
+          "type": "string"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID that we want to parse",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Category"
+        ],
+        "summary": "Fetch category by object Id",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/category/add/{menu}": {
+      "parameters": [
+        {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "description": "Auth Token",
+          "type": "string"
+        },
+        {
+          "name": "menu",
+          "in": "path",
+          "required": true,
+          "description": "ID of menu that we want to parse",
+          "type": "string"
+        }
+      ],
+      "post": {
+        "tags": [
+          "Category"
+        ],
+        "summary": "Create new category",
+        "parameters": [
+          {
+            "name": "category",
+            "in": "body",
+            "description": "Category that we want to create"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "New category is created"
+          }
+        }
+      }
+    },
+    "/category/update/{id}": {
+      "parameters": [
+        {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "description": "Auth Token",
+          "type": "string"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of category that we want to find",
+          "type": "string"
+        }
+      ],
+      "put": {
+        "summary": "Update category with give ID",
+        "tags": [
+          "Category"
+        ],
+        "parameters": [
+          {
+            "name": "category",
+            "in": "body",
+            "description": "Category with new values of properties"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Category is updated"
+          }
+        }
+      }
+    },
+    "/category/update/enable/visibility/{id}": {
+      "parameters": [
+        {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "description": "Auth Token",
+          "type": "string"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of category that we want to find",
+          "type": "string"
+        }
+      ],
+      "put": {
+        "summary": "Enable category with give ID",
+        "tags": [
+          "Category"
+        ],
+        "responses": {
+          "200": {
+            "description": "Category is enabled"
+          }
+        }
+      }
+    },
+    "/category/update/disable/visibility/{id}": {
+      "parameters": [
+        {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "description": "Auth Token",
+          "type": "string"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of category that we want to find",
+          "type": "string"
+        }
+      ],
+      "put": {
+        "summary": "Disable category with give ID",
+        "tags": [
+          "Category"
+        ],
+        "responses": {
+          "200": {
+            "description": "Category is disabled"
+          }
+        }
+      }
+    },
+    "/category/update/photo/{id}": {
+      "parameters": [
+        {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "description": "Auth Token",
+          "type": "string"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of category that we want to find",
+          "type": "string"
+        }
+      ],
+      "put": {
+        "summary": "Update category photo with give ID",
+        "tags": [
+          "Category"
+        ],
+        "parameters": [
+          {
+            "name": "category",
+            "in": "body",
+            "description": "Category with new values of properties"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Category photo is updated"
+          }
+        }
+      }
+    },
+    "/category/delete/{id}": {
+      "parameters": [
+        {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "description": "Auth Token",
+          "type": "string"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of category that we want to delete",
+          "type": "string"
+        }
+      ],
+      "delete": {
+        "tags": [
+          "Category"
+        ],
+        "summary": "Delete an existant category",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/product/retrieve": {
+      "parameters": [
+        {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "description": "Auth Token",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Fetch all products",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/product/fetch/enable": {
+      "parameters": [
+        {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "description": "Auth Token",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Fetch all enabled products",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/product/fetch/disable": {
+      "parameters": [
+        {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "description": "Auth Token",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Fetch all disabled products",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/product/find/item/:id": {
+      "parameters": [
+        {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "description": "Auth Token",
+          "type": "string"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of category that we want to find",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Fetch product by object Id",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/products/add/{categoryFK}": {
+      "parameters": [
+        {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "description": "Auth Token",
+          "type": "string"
+        },
+        {
+          "name": "categoryFK",
+          "in": "path",
+          "required": true,
+          "description": "ID of category that we want to parse",
+          "type": "string"
+        }
+      ],
+      "post": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Create new product",
+        "parameters": [
+          {
+            "name": "product",
+            "in": "body",
+            "description": "Product that we want to create"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "New product is created"
+          }
+        }
+      }
+    },
+    "/product/update/{id}": {
+      "parameters": [
+        {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "description": "Auth Token",
+          "type": "string"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of product that we want to find",
+          "type": "string"
+        }
+      ],
+      "put": {
+        "summary": "Update product with give ID",
+        "tags": [
+          "Product"
+        ],
+        "parameters": [
+          {
+            "name": "product",
+            "in": "body",
+            "description": "Product with new values of properties"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Product is updated"
+          }
+        }
+      }
+    },
+    "/product/update/enable/visibility/{id}": {
+      "parameters": [
+        {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "description": "Auth Token",
+          "type": "string"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of product that we want to find",
+          "type": "string"
+        }
+      ],
+      "put": {
+        "summary": "Enable product with give ID",
+        "tags": [
+          "Product"
+        ],
+        "responses": {
+          "200": {
+            "description": "Product is enabled"
+          }
+        }
+      }
+    },
+    "/product/update/disable/visibility/{id}": {
+      "parameters": [
+        {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "description": "Auth Token",
+          "type": "string"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of product that we want to find",
+          "type": "string"
+        }
+      ],
+      "put": {
+        "summary": "Disable product with give ID",
+        "tags": [
+          "Product"
+        ],
+        "responses": {
+          "200": {
+            "description": "Product is disabled"
+          }
+        }
+      }
+    },
+    "/product/update/photo/{id}": {
+      "parameters": [
+        {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "description": "Auth Token",
+          "type": "string"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of product that we want to find",
+          "type": "string"
+        }
+      ],
+      "put": {
+        "summary": "Update product photo with give ID",
+        "tags": [
+          "Product"
+        ],
+        "parameters": [
+          {
+            "name": "product",
+            "in": "body",
+            "description": "Product with new values of properties"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Product photo is updated"
+          }
+        }
+      }
+    },
+    "/product/delete/{id}": {
+      "parameters": [
+        {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "description": "Auth Token",
+          "type": "string"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of product that we want to delete",
+          "type": "string"
+        }
+      ],
+      "delete": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Delete an existant product",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/ingredient/add/{productFK}": {
+      "parameters": [
+        {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "description": "Auth Token",
+          "type": "string"
+        },
+        {
+          "name": "productFK",
+          "in": "path",
+          "required": true,
+          "description": "ID of product that we want to parse",
+          "type": "string"
+        }
+      ],
+      "post": {
+        "tags": [
+          "Ingredient"
+        ],
+        "summary": "Create new choice",
+        "parameters": [
+          {
+            "name": "ingredient",
+            "in": "body",
+            "description": "Choice that we want to create"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "New choice is created"
+          }
+        }
+      }
+    },
+    "/ingredient/retrieve": {
+      "parameters": [
+        {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "description": "Auth Token",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Ingredient"
+        ],
+        "summary": "Fetch all choices",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/ingredient/retrieve/groupe_by/type": {
+      "parameters": [
+        {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "description": "Auth Token",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Ingredient"
+        ],
+        "summary": "Fetch all choices group by type",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/ingredient/find/item/:id": {
+      "parameters": [
+        {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "description": "Auth Token",
+          "type": "string"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of choice that we want to find",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Fetch choice by object Id",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/ingredient/update/{id}": {
+      "parameters": [
+        {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "description": "Auth Token",
+          "type": "string"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of choice that we want to find",
+          "type": "string"
+        }
+      ],
+      "put": {
+        "summary": "Update choice with give ID",
+        "tags": [
+          "Ingredient"
+        ],
+        "parameters": [
+          {
+            "name": "ingredient",
+            "in": "body",
+            "description": "Choice with new values of properties"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Choice is updated"
+          }
+        }
+      }
+    },
+    "/ingredient/delete/{id}": {
+      "parameters": [
+        {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "description": "Auth Token",
+          "type": "string"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of choice that we want to delete",
+          "type": "string"
+        }
+      ],
+      "delete": {
+        "tags": [
+          "Ingredient"
+        ],
+        "summary": "Delete an existant choice",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/help/addhelp/{table}": {
+      "parameters": [
+        {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "description": "Auth Token",
+          "type": "string"
+        },
+        {
+          "name": "table",
+          "in": "path",
+          "required": true,
+          "description": "ID of table that we want to parse",
+          "type": "string"
+        }
+      ],
+      "post": {
+        "tags": [
+          "HelpRequest"
+        ],
+        "summary": "Create new HelpRequest",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "New item is created"
+          }
+        }
+      }
+    },
+    "/help/getHelpById/{id}": {
+      "get": {
+        "tags": [
+          "HelpRequest"
+        ],
+        "summary": "Get HelpRequest by Id",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Auth Token",
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID od the help",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/help/getHelpList": {
+      "get": {
+        "tags": [
+          "HelpRequest"
+        ],
+        "summary": "Get all HelpRequest",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Auth Token",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/help/updateHelp/{id}": {
+      "parameters": [
+        {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "description": "Auth Token",
+          "type": "string"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of HelpRequest",
+          "type": "string"
+        }
+      ],
+      "put": {
+        "summary": "Update request",
+        "tags": [
+          "HelpRequest"
+        ],
+        "responses": {
+          "200": {
+            "description": "HelpRequest is updated"
+          }
+        }
+      }
+    },
+    "/tax/addTax": {
+      "parameters": [
+        {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "description": "Auth Token",
+          "type": "string"
+        },
+        {
+          "name": "tax",
+          "in": "body",
+          "description": "Menu that we want to create"
+        }
+      ],
+      "post": {
+        "tags": [
+          "Tax"
+        ],
+        "summary": "Create new request",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "New request is created"
+          }
+        }
+      }
+    },
+    "/tax/getTaxs": {
+      "parameters": [
+        {
+          "name": "Authorization user",
+          "in": "cookie",
+          "required": true,
+          "description": "Auth Token",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Tax"
+        ],
+        "summary": "Get all taxs",
+        "responses": {
+          "200": {
+            "description": "Data is fetched"
+          }
+        }
+      }
+    },
+    "/tax/getTaxById/{id}": {
+      "parameters": [
+        {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "description": "Auth Token",
+          "type": "string"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of tax that we want to parse",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Tax"
+        ],
+        "summary": "Get tax by id",
+        "responses": {
+          "200": {
+            "description": "Data is fetched"
+          }
+        }
+      }
+    },
+    "/tax/editTaxById/{id}": {
+      "parameters": [
+        {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "description": "Auth Token",
+          "type": "string"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "Tax update",
+          "type": "string"
+        },
+        {
+          "name": "tax",
+          "in": "body",
+          "description": "Tax updates"
+        }
+      ],
+      "put": {
+        "tags": [
+          "Tax"
+        ],
+        "summary": "Update tax status",
+        "responses": {
+          "200": {
+            "description": "Status updated"
+          }
+        }
+      }
+    },
+    "/tax/hideTax/{id}": {
+      "parameters": [
+        {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "description": "Auth Token",
+          "type": "string"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "Hide tax",
+          "type": "string"
+        }
+      ],
+      "put": {
+        "tags": [
+          "Tax"
+        ],
+        "summary": "hide tax",
+        "responses": {
+          "200": {
+            "description": "Status updated"
+          }
+        }
+      }
+    },
+    "/tax/activateTax/{id}": {
+      "parameters": [
+        {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "description": "Auth Token",
+          "type": "string"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "Activate tax",
+          "type": "string"
+        }
+      ],
+      "put": {
+        "tags": [
+          "Tax"
+        ],
+        "summary": "activate tax",
+        "responses": {
+          "200": {
+            "description": "Status updated"
+          }
+        }
+      }
+    },
+    "/tax/getActivateTaxs/{id}": {
+      "parameters": [
+        {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "description": "Auth Token",
+          "type": "string"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "Get Activate tax",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Tax"
+        ],
+        "summary": "Get Activate tax",
+        "responses": {
+          "200": {
+            "description": "Status updated"
+          }
+        }
+      }
+    },
+    "/table/addNewTable/{restaurant}": {
+      "parameters": [
+        {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "description": "Auth Token",
+          "type": "string"
+        },
+        {
+          "name": "restaurant",
+          "in": "path",
+          "required": true,
+          "description": "ID of restaurant",
+          "type": "string"
+        }
+      ],
+      "post": {
+        "tags": [
+          "Table"
+        ],
+        "summary": "Create new Table",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Auth Token",
+            "type": "string"
+          },
+          {
+            "name": "table",
+            "in": "body",
+            "description": "Table that we want to create"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "New table is created"
+          }
+        }
+      }
+    },
+    "/table/getTablebyId/{id}": {
+      "get": {
+        "tags": [
+          "Table"
+        ],
+        "summary": "Get Table by Id",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Auth Token",
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID od the Table",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/table/getTables": {
+      "get": {
+        "tags": [
+          "Table"
+        ],
+        "summary": "Get all Tables",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Auth Token",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/table/update/{id}": {
+      "parameters": [
+        {
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "description": "Auth Token",
+          "type": "string"
+        },
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of Table",
+          "type": "string"
+        }
+      ],
+      "put": {
+        "summary": "Update Table",
+        "tags": [
+          "Table"
+        ],
+        "parameters": [
+          {
+            "name": "table",
+            "in": "body",
+            "description": "Table with new values of properties"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Table is updated"
+          }
+        }
+      }
+    },
+    "/notification/get/by/id/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of notification",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "summary": "get notification by id",
+        "tags": [
+          "Notification"
+        ],
+        "responses": {
+          "200": {
+            "description": "Notification retrieved"
+          }
+        }
+      }
+    },
+    "/user/getPrivilegeByEmployee/{id}": {
+      "get": {
+        "tags": [
+          "Employee management"
+        ],
+        "summary": "Get all employees Privilege",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Auth Token",
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID employee",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/user/updatePrivilege/employee/{id}": {
+      "put": {
+        "tags": [
+          "Employee management"
+        ],
+        "summary": "Update employees Privilege",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID employee",
+            "type": "string"
+          },
+          {
+            "name": "privilege",
+            "in": "body",
+            "description": "Employee privilege"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/user/updateEmployee/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of Employee",
+          "type": "string"
+        }
+      ],
+      "put": {
+        "summary": "Update Employee data",
+        "tags": [
+          "Employee management"
+        ],
+        "parameters": [
+          {
+            "name": "update",
+            "in": "body",
+            "description": "Employee with new values of properties"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Employee is updated"
+          }
+        }
+      }
+    },
+    "/user/enableEmployeeAccount/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of Employee",
+          "type": "string"
+        }
+      ],
+      "put": {
+        "summary": "Enable Employee account",
+        "tags": [
+          "Employee management"
+        ],
+        "responses": {
+          "200": {
+            "description": "Employee is updated"
+          }
+        }
+      }
+    },
+    "/user/disableEmployeeAccount/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of Employee",
+          "type": "string"
+        }
+      ],
+      "put": {
+        "summary": "Disable Employee account",
+        "tags": [
+          "Employee management"
+        ],
+        "responses": {
+          "200": {
+            "description": "Employee is updated"
+          }
+        }
+      }
+    },
+    "/user/deleteEmployee/{id}": {
+      "delete": {
+        "tags": [
+          "Employee management"
+        ],
+        "summary": "Delete Employee byId",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "ID od the Employee",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/user/getById/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of Responsable",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "summary": "get Responsable by id",
+        "tags": [
+          "Responsable"
+        ],
+        "responses": {
+          "200": {
+            "description": "Responsable trouver"
+          }
+        }
+      }
+    },
+    "/user/enableResponsableAccount/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of Responsable",
+          "type": "string"
+        }
+      ],
+      "put": {
+        "summary": "Enable Responsable account",
+        "tags": [
+          "Responsable"
+        ],
+        "responses": {
+          "200": {
+            "description": "Responsable is updated"
+          }
+        }
+      }
+    },
+    "/user/disableResponsableAccount/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "ID of Responsable",
+          "type": "string"
+        }
+      ],
+      "put": {
+        "summary": "Disable responsabel account",
+        "tags": [
+          "Responsable"
+        ],
+        "responses": {
+          "200": {
+            "description": "resoponsable is updated"
+          }
+        }
+      }
+    },
+    "/user/consultertrue": {
+     
+      "get": {
+        "tags": [
+          "Responsable"
+        ],
+        "summary": "Fetch all Responsable enable",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/user/getAllResponsable": {
+     
+      "get": {
+        "tags": [
+          "Responsable"
+        ],
+        "summary": "Fetch all Responsable",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/user/consulterfalse": {
+     
+      "get": {
+        "tags": [
+          "Responsable"
+        ],
+        "summary": "Fetch all Responsable disenable",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/user/utils/typecuisine": {
+     
+      "get": {
+        "tags": [
+          "Responsable"
+        ],
+        "summary": "Fetch all cuisine type",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/user/utils/citiesByCountryweb": {
+     
+      "get": {
+        "tags": [
+          "Responsable"
+        ],
+        "summary": "Fetch all cuisine type",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/user/addRestaurantsuper": {
+      "post": {
+        "tags": [
+          "Responsable"
+        ],
+        "summary": "addResponable et l'affecter au restaurant ",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Auth Token",
+            "type": "string"
+          },
+          {
+            "name": "userName",
+            "in": "formData",
+            "description": "Your userName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "phone",
+            "in": "formData",
+            "description": "Your phone",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "Your email",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "nameRes",
+            "in": "formData",
+            "description": "Your nameRes",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "address",
+            "in": "formData",
+            "description": "Your address",
+            "required": true,
+            "type": "string"
+          }, {
+            "name": "cuisineType",
+            "in": "formData",
+            "description": "Your cuisineType",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "taxeTPS",
+            "in": "formData",
+            "description": "Your taxeTPS",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "name": "taxeTUQ",
+            "in": "formData",
+            "description": "Your taxeTUQ",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/user/modifyRestaurant/{restaurantId}/{userId}": {
+      "put": {
+        "tags": [
+          "Responsable"
+        ],
+        "summary": "modifier Responable et  restaurant ",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Auth Token",
+            "type": "string"
+          },
+          {
+            "name": "userName",
+            "in": "formData",
+            "description": "Your userName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "phone",
+            "in": "formData",
+            "description": "Your phone",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "Your email",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "nameRes",
+            "in": "formData",
+            "description": "Your nameRes",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "address",
+            "in": "formData",
+            "description": "Your address",
+            "required": true,
+            "type": "string"
+          }, {
+            "name": "cuisineType",
+            "in": "formData",
+            "description": "Your cuisineType",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "taxeTPS",
+            "in": "formData",
+            "description": "Your taxeTPS",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "name": "taxeTUQ",
+            "in": "formData",
+            "description": "Your taxeTUQ",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+      "properties": {
+        "_id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "userName": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "birthday": {
+          "type": "string"
+        },
+        "help": {
+          "type": "string"
+        },
+        "activate": {
+          "type": "boolean"
+        },
+        "firstLogin": {
+          "type": "string"
+        },
+        "provider": {
+          "type": "boolean"
+        },
+        "proof": {
+          "type": "string"
+        },
+        "restaurantFK": {
+          "type": "mongoose.Schema.Types.ObjectId",
+          "ref": "Restaurant"
+        }
+      }
+    },
+    "Menu": {
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "_id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "name": {
+          "type": "string"
+        },
+        "visibility": {
+          "type": "string"
+        },
+        "restaurantFK": {
+          "type": "mongoose.Schema.Types.ObjectId",
+          "ref": "Restaurant"
+        }
+      }
+    },
+    "Category": {
+      "required": [
+        "libelle"
+      ],
+      "properties": {
+        "_id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "libelle": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "photo": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "visibility": {
+          "type": "string"
+        }
+      }
+    },
+    "Product": {
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "_id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "name": {
+          "type": "string"
+        },
+        "photo": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "price": {
+          "type": "number"
+        },
+        "disponibility": {
+          "type": "number"
+        },
+        "disponibilityDuration": {
+          "type": "number"
+        },
+        "promotion": {
+          "type": "number"
+        },
+        "visibility": {
+          "type": "string"
+        },
+        "categoryFK": {
+          "type": "mongoose.Schema.Types.ObjectId",
+          "ref": "Category"
+        }
+      }
+    },
+    "Ingredient": {
+      "required": [
+        "libelle"
+      ],
+      "properties": {
+        "_id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "libelle": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "number"
+        },
+        "price": {
+          "type": "number",
+          "uniqueItems": true
+        },
+        "disponibility": {
+          "type": "number"
+        },
+        "productFK": {
+          "type": "mongoose.Schema.Types.ObjectId",
+          "ref": "Product"
+        }
+      }
+    },
+    "HelpRequest": {
+      "properties": {
+        "_id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "date": {
+          "type": "date"
+        },
+        "etat": {
+          "type": "string"
+        },
+        "tableNb": {
+          "type": "number"
+        },
+        "table": {
+          "type": "mongoose.Schema.Types.ObjectId",
+          "ref": "table"
+        }
+      }
+    },
+    "Tax": {
+      "properties": {
+        "_id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "typeTax": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "idNumber": {
+          "type": "number"
+        },
+        "address": {
+          "type": "string"
+        },
+        "phoneNumber": {
+          "type": "string"
+        },
+        "activate": {
+          "type": "boolean"
+        },
+        "user": {
+          "type": "mongoose.Schema.Types.ObjectId",
+          "ref": "user"
+        }
+      }
+    },
+    "Table": {
+      "required": [
+        "tableNb"
+      ],
+      "properties": {
+        "_id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "tableNb": {
+          "type": "string"
+        },
+        "chairNb": {
+          "type": "string"
+        },
+        "restaurant": {
+          "type": "mongoose.Schema.Types.ObjectId",
+          "ref": "Restaurant"
+        }
+      }
+    },
+    "Notification": {
+      "properties": {
+        "_id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "title": {
+          "type": "string"
+        },
+        "body": {
+          "type": "string"
+        },
+        "suggestion": {
+          "type": "string"
+        },
+        "date": {
+          "type": "date"
+        },
+        "orderFK": {
+          "type": "mongoose.Schema.Types.ObjectId",
+          "ref": "Order"
+        },
+        "userConcerned": {
+          "type": "mongoose.Schema.Types.ObjectId",
+          "ref": "User"
+        }
+      }
+    },
+    "NotificationEmployee": {
+      "properties": {
+        "_id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "title": {
+          "type": "string"
+        },
+        "body": {
+          "type": "string"
+        },
+        "date": {
+          "type": "date"
+        },
+        "orderFK": {
+          "type": "mongoose.Schema.Types.ObjectId",
+          "ref": "Order"
+        },
+        "helpRequestFK": {
+          "type": "mongoose.Schema.Types.ObjectId",
+          "ref": "help_request"
+        },
+        "userFK": {
+          "type": "mongoose.Schema.Types.ObjectId",
+          "ref": "User"
+        },
+        "userSource": {
+          "type": "mongoose.Schema.Types.ObjectId",
+          "ref": "User"
+        }
+      }
+    },
+    "Privilege": {
+      "properties": {
+        "_id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "user_management": {
+          "type": "boolean"
+        },
+        "table_management": {
+          "type": "boolean"
+        },
+        "print_qr": {
+          "type": "boolean"
+        },
+        "consulter_historique": {
+          "type": "boolean"
+        },
+        "traiter_cmd": {
+          "type": "boolean"
+        },
+        "update_delay_waiting": {
+          "type": "boolean"
+        },
+        "livrer_cmd": {
+          "type": "boolean"
+        },
+        "paid_cash": {
+          "type": "boolean"
+        },
+        "consulter_comments": {
+          "type": "boolean"
+        },
+        "traiter_comments": {
+          "type": "boolean"
+        },
+        "consulter_help_request": {
+          "type": "boolean"
+        },
+        "consulter_historique_help_request": {
+          "type": "boolean"
+        },
+        "traiter_help_request": {
+          "type": "boolean"
+        },
+        "user": {
+          "type": "mongoose.Schema.Types.ObjectId",
+          "ref": "User"
+        }
+      }
+    },
+    "cartOrder": {
+      "properties": {
+        "_id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "tableNb": {
+          "type": "number"
+        },
+        "quantityProduct": {
+          "type": "number"
+        },
+        "productFK": {
+          "type": "mongoose.Schema.Types.ObjectId",
+          "ref": "Product"
+        },
+        "ingredientFK": {
+          "type": "mongoose.Schema.Types.ObjectId",
+          "ref": "Ingredient"
+        },
+        "itemsFK": {
+          "type": "mongoose.Schema.Types.ObjectId",
+          "ref": "Item"
+        },
+        "user": {
+          "type": "mongoose.Schema.Types.ObjectId",
+          "ref": "User"
+        },
+        "restaurantFK": {
+          "type": "mongoose.Schema.Types.ObjectId",
+          "ref": "Restaurant"
+        }
+      }
+    },
+    "cartTrash": {
+      "properties": {
+        "_id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "tableNb": {
+          "type": "number"
+        },
+        "quantityProduct": {
+          "type": "number"
+        },
+        "productFK": {
+          "type": "mongoose.Schema.Types.ObjectId",
+          "ref": "Product"
+        },
+        "ingredientFK": {
+          "type": "mongoose.Schema.Types.ObjectId",
+          "ref": "Ingredient"
+        },
+        "itemsFK": {
+          "type": "mongoose.Schema.Types.ObjectId",
+          "ref": "Item"
+        },
+        "user": {
+          "type": "mongoose.Schema.Types.ObjectId",
+          "ref": "User"
+        },
+        "restaurantFK": {
+          "type": "mongoose.Schema.Types.ObjectId",
+          "ref": "Restaurant"
+        }
+      }
+    },
+    "order": {
+      "properties": {
+        "_id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "tableNb": {
+          "type": "String"
+        },
+        "orderNb": {
+          "type": "number"
+        },
+        "statusOrder ": {
+          "type": "String"
+        },
+        "statusPay": {
+          "type": "Boolean",
+          "default": false
+        },
+        "statusRefunded": {
+          "type": "Boolean",
+          "default": false
+        },
+        "statusCancelRequest": {
+          "type": "String"
+        },
+        "statusModified": {
+          "type": "Boolean",
+          "default": 0
+        },
+        "durationPreparation": {
+          "type": "String",
+          "default": "0"
+        },
+        "allergyName": {
+          "type": "String"
+        },
+        "reason": {
+          "type": "String",
+          "default": ""
+        },
+        "suggestion": {
+          "type": "String",
+          "default": ""
+        },
+        "totalPrice": {
+          "type": "String"
+        },
+        "payMethod": {
+          "type": "String"
+        },
+        "date": {
+          "type": "Date"
+        },
+        "dateAcceptOrder": {
+          "type": "Date"
+        },
+        "confirmPay": {
+          "type": "Boolean",
+          "default": false
+        },
+        "reasonCancelOrder": {
+          "type": "String",
+          "default": ""
+        },
+        "noteCancelOrder": {
+          "type": "String",
+          "default": ""
+        },
+        "payment_intent": {
+          "type": "String",
+          "default": ""
+        },
+        "avisAdded": {
+          "type": "Boolean",
+          "default": false
+        },
+        "cartOrderFK": {
+          "type": "mongoose.Schema.Types.ObjectId",
+          "ref": "CartOrder"
+        },
+        "user": {
+          "type": "mongoose.Schema.Types.ObjectId",
+          "ref": "User"
+        },
+        "restaurantFK": {
+          "type": "mongoose.Schema.Types.ObjectId",
+          "ref": "Restaurant"
+        },
+        "taxFK ": {
+          "type": "mongoose.Schema.Types.ObjectId",
+          "ref": "tax"
+        }
+      }
+    },
+    "cart": {
+      "properties": {
+        "_id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "productFK": [
+          {
+            "type": "mongoose.Schema.Types.ObjectId",
+            "ref": "Product"
+          }
+        ],
+        "tableNb": {
+          "type": "Number"
+        },
+        "ingredientFK": [
+          {
+            "type": "mongoose.Schema.Types.ObjectId",
+            "ref": "Ingredient"
+          }
+        ],
+        "itemsFK": [
+          {
+            "type": "mongoose.Schema.Types.ObjectId",
+            "ref": "Items"
+          }
+        ],
+        "quantityProduct": [
+          {
+            "type": "Number"
+          }
+        ],
+        "user": {
+          "type": "mongoose.Schema.Types.ObjectId",
+          "ref": "User"
+        }
+      }
+    },
+    "item": {
+      "properties": {
+        "_id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "title": {
+          "type": "String",
+          "unique": true
+        },
+        "price": {
+          "type": "Number"
+        },
+        "visibility": {
+          "type": "Boolean",
+          "default": true
+        },
+        "ingredientFK": {
+          "type": " mongoose.Schema.Types.ObjectId",
+          "ref": "Ingredient"
+        }
+      }
+    },
+    "Avis": {
+      "properties": {
+        "_id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "comment": {
+          "type": "string",
+          "default": ""
+        },
+        "note": {
+          "type": "number"
+        },
+        "date": {
+          "type": "date"
+        },
+        "response": {
+          "type": "string"
+        },
+        "orderFK": {
+          "type": "mongoose.Schema.Types.ObjectId",
+          "ref": "Order"
+        },
+        "user": {
+          "type": "mongoose.Schema.Types.ObjectId",
+          "ref": "User"
+        },
+        "restaurantFK": {
+          "type": "mongoose.Schema.Types.ObjectId",
+          "ref": "Restaurant"
+        }
+      }
+    },
+    "commentAvis": {
+      "properties": {
+        "_id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "comment": {
+          "type": "string",
+          "default": ""
+        },
+        "date": {
+          "type": "date"
+        },
+        "avisFK": {
+          "type": "mongoose.Schema.Types.ObjectId",
+          "ref": "Avis"
+        },
+        "user": {
+          "type": "mongoose.Schema.Types.ObjectId",
+          "ref": "User"
+        },
+        "restaurantFK": {
+          "type": "mongoose.Schema.Types.ObjectId",
+          "ref": "Restaurant"
+        }
+      }
+    },
+    
+    "Reclamation": {
+      "properties": {
+        "_id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "type": {
+          "type": "string",
+          "default": ""
+        },
+        "message": {
+          "type": "string",
+          "default": ""
+        },
+        "response": {
+          "type": "string",
+          "default": ""
+        },
+        "image": {
+          "type": "string",
+          "default": ""
+        },
+        "statusReclamation": {
+          "type": "string",
+          "default": ""
+        },
+        "tableNb": {
+          "type": "string",
+          "default": ""
+        },
+        "date": {
+          "type": "date"
+        },
+        "orderFK": {
+          "type": "mongoose.Schema.Types.ObjectId",
+          "ref": "Avis"
+        },
+        "user": {
+          "type": "mongoose.Schema.Types.ObjectId",
+          "ref": "User"
+        },
+        "restaurantFK": {
+          "type": "mongoose.Schema.Types.ObjectId",
+          "ref": "Restaurant"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,50 @@
+---
+- name: Deploy back application on Kubernetes
+  hosts: all
+  gather_facts: false
+  become: yes
+  tasks:
+    - name: Create deployment
+      k8s:
+        api_version: apps/v1
+        kind: Deployment
+        name: ordear-backend-deployment
+        namespace: ordear
+        definition:
+          metadata:
+            labels:
+              app: ordearbackend-app
+          spec:
+            replicas: 1
+            selector:
+              matchLabels:
+                app: ordearbackend-app
+            template:
+              metadata:
+                labels:
+                  app: ordearbackend-app
+              spec:
+                containers:
+                  - name: ordear-rest-api
+                    image: samarcherni/ordear:v1.0.7-prod
+                    imagePullPolicy: Always
+                    ports:
+                      - containerPort: 5555
+    - name: Create service
+      k8s:
+        api_version: v1
+        kind: Service
+        name: ordear-backend-service
+        namespace: ordear
+        definition:
+          metadata:
+            labels:
+              app: ordearbackend-app
+          spec:
+            selector:
+              app: ordearbackend-app
+            ports:
+              - protocol: TCP
+                port: 4046
+                targetPort: 5555
+            type: LoadBalancer

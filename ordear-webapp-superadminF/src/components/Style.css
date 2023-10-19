@@ -1,0 +1,171 @@
+.modal-content {
+    background-color: white;
+  }
+  /* Pour les écrans de largeur inférieure à 768 pixels (téléphones) */
+@media screen and (max-width: 768px) {
+  .responsables-container ul {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* Pour les écrans de largeur supérieure à 768 pixels (tablettes, ordinateurs, etc.) */
+@media screen and (min-width: 769px) {
+  .responsables-container ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+  .container {
+    display: flex;
+    justify-content: center; /* Centrer horizontalement */
+    align-items: center; /* Centrer verticalement */
+    height: 100vh; /* Hauteur de la page */
+  }
+  .transparent-row {
+    opacity: 0.5; /* Vous pouvez ajuster cette valeur selon vos préférences */
+  }
+  
+  .sidebar-container {
+    /* Set the sidebar container to use Flexbox */
+    display: flex;
+    flex-direction: column; /* Stack the content vertically */
+    align-items: flex-end; /* Align content to the right side */
+    /* ... Add any other styles for the sidebar container ... */
+  }
+  
+  .links-container {
+    /* Set the links container to use Flexbox */
+    display: flex;
+    flex-direction: column; /* Stack the links vertically */
+    /* ... Add any other styles for the links container ... */
+  }
+  .custom-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .pagination-button {
+    padding: 8px 16px;
+    margin: 0 5px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  }
+  
+  .pagination-button.active {
+    background-color: #cb75cb;
+    color: #fff;
+    border-color: #7597cb;
+  }
+  
+  .pagination-button.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  
+
+  .popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .popup.active {
+    display: flex;
+  }
+  
+  .form-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+  }
+  
+  .form-container h2 {
+    margin-bottom: 20px;
+  }
+  
+  .form-container form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-container input {
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  .no-border {
+    border: none;
+    outline: none; /* This will remove the focus outline when the button is clicked */
+    background: transparent; /* This ensures the button background is transparent */
+    padding: 0; /* Remove any padding around the button */
+  }
+  
+  
+  .button-container button:nth-child(3) {
+    background-color: #cb75cb;
+    color: white;
+  }
+  
+  .custom-scroll {
+    overflow-y: scroll !important;
+  }
+  
+  
+  
+  .link-text {
+    /* Make the links look like text links */
+    text-decoration: underline;
+    color: #800080; /* Blue color (#044494) */
+    cursor: pointer; /* Show the pointer cursor when hovering over the link */
+    /* ... Add any other styles for the links ... */
+  }
+  
+
+
+  .role-filter {
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* Style des boutons */
+  .role-filter button {
+    background-color: #800080;
+    margin: 5px; /* Ajoute un espacement entre les boutons */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+ 
+
+  .role-filter {
+    display: flex;
+    justify-content: center;
+  }
+  .modal-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Assurez-vous que le conteneur occupe toute la hauteur de la page */
+  }
+
+      

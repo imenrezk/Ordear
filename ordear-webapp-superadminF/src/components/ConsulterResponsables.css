@@ -1,0 +1,35 @@
+/* ConsulterResponsables.css */
+
+/* Basic styling for larger screens */
+.responsables-container {
+    padding: 20px;
+  }
+  
+  /* Media query for tablets */
+  @media screen and (max-width: 768px) {
+    .responsables-container {
+      /* Adjust styles for tablet screens */
+      padding: 10px;
+    }
+  }
+  
+  /* Media query for mobile devices */
+  @media screen and (max-width: 480px) {
+    .responsables-container {
+      /* Adjust styles for mobile screens */
+      padding: 5px;
+    }
+  }
+  /* ConsulterResponsables.css */
+
+.container {
+    display: flex; /* Use flexbox to arrange items side by side */
+  }
+  
+  .responsables-container {
+    flex: 0; /* Allow the responsables-container to grow and take remaining space */
+    padding: 20px;
+  }
+  
+  /* Add other styles for the Sidebar if needed */
+  

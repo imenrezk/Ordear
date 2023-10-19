@@ -1,0 +1,52 @@
+---
+- name: Deploy application on Kubernetes
+  hosts: all
+  gather_facts: false
+  become: yes
+  tasks:
+    - name: Create deployment
+      k8s:
+        api_version: apps/v1
+        kind: Deployment
+        name: ordear-superadmin-deployment
+        namespace: ordear
+        definition:
+          metadata:
+            labels:
+              app: ordear-superadmin
+          spec:
+            replicas: 1
+            selector:
+              matchLabels:
+                app: ordear-superadmin
+            template:
+              metadata:
+                labels:
+                  app: ordear-superadmin
+              spec:
+                containers:
+                  - name: ordear-superadmin
+                    image: samarcherni/ordearsuperadmin:v1.0.6-prod
+                    ports:
+                      - containerPort: 3000
+                    env:
+                      - name: REACT_APP_BACKEND_URL
+                        value: "http://185.192.96.18:31302"
+    - name: Create service
+      k8s:
+        api_version: v1
+        kind: Service
+        name: ordear-superadmin-service
+        namespace: ordear
+        definition:
+          metadata:
+            labels:
+              app: ordear-superadmin
+          spec:
+            selector:
+              app: ordear-superadmin
+            ports:
+              - protocol: TCP
+                port: 4049
+                targetPort: 3000
+            type: LoadBalancer
